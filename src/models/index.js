@@ -13,15 +13,15 @@ let sequelizeOptions =
   process.env.NODE_ENV === "production"
     ? {
         dialectOptions: {
-          // ssl: {
-          //   require: true,
-          //   rejectUnauthorized: false,
-          // },
+          ssl: {
+            require: true,
+            rejectUnauthorized: false,
+          },
         },
       }
     : {};
 
-let sequelize = new Sequelize(POSTGRES_URL, {});
+let sequelize = new Sequelize(POSTGRES_URL, sequelizeOptions);
 let foodModel = food(sequelize, DataTypes);
 let clothesModel = clothes(sequelize, DataTypes);
 
